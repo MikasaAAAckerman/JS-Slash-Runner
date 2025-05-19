@@ -4,6 +4,14 @@
 > This is an English translation of the original [JS-Slash-Runner](https://github.com/N0VI028/JS-Slash-Runner) project. 
 > All credit for the original work goes to the original author.
 
+To install extension in SillyTavern, use the following URL:
+```
+https://github.com/endege/JS-Slash-Runner.git
+```
+Refresh browser page so it shows up in the Extensions tab.
+auto_update is set to false.
+
+
 > [!Warning]
 > Executing custom JavaScript code may pose security risks:
 >
