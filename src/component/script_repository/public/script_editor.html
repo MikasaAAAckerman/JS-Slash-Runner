@@ -1,0 +1,30 @@
+<div id="script-editor" class="flex-container flexFlowColumn alignItemsCenter height100p overflowYAuto">
+  <h3 class="flex-container alignItemsCenter">Script Editor</h3>
+  <div id="script-name" class="script-editor-container">
+    <h4>Script Name</h4>
+    <input type="text" id="script-name-input" aria-label="Script name" />
+  </div>
+  <div id="script-content" class="script-editor-container">
+    <h4>Script Content</h4>
+    <textarea id="script-content-textarea" placeholder="JavaScript code for the script" rows="10" aria-label="Script content"></textarea>
+  </div>
+  <div id="script-info" class="script-editor-container">
+    <h4>Author Notes</h4>
+    <textarea
+      id="script-info-textarea"
+      placeholder="Enter information to display about the script (author, version, notes, etc.). Supports basic markdown and HTML."
+      rows="5"
+      aria-label="Author notes"
+    ></textarea>
+  </div>
+  <div id="script-button-content" class="script-editor-container">
+    <div class="flex-container gap10 alignItemsCenter justifyContentCenter">
+      <h4>Button Triggers</h4>
+      <div class="menu_button interactable" id="add-button-trigger" title="Add button trigger">
+        <i class="fa-solid fa-plus"></i>
+      </div>
+    </div>
+    <small>Requires eventOnButton to work</small>
+    <div class="button-list"></div>
+  </div>
+</div>

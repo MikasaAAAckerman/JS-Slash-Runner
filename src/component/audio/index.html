@@ -1,0 +1,131 @@
+<div class="extension-content-item box-container collapsible flexFlowColumn" style="align-items: flex-start">
+  <div id="audio-player-header" class="flex-container spaceBetween alignItemsCenter width100p">
+    <div class="flex flexFlowColumn">
+      <div class="settings-title-text">Audio Player</div>
+      <div class="settings-title-description">Built-in global audio player</div>
+    </div>
+    <div class="toggle-switch">
+      <input type="checkbox" id="audio-enable-toggle" class="toggle-input" checked aria-label="Toggle audio player" />
+      <label for="audio-enable-toggle" class="toggle-label">
+        <span class="toggle-handle"></span>
+      </label>
+    </div>
+  </div>
+  <div id="audio-player-content" class="flex-container flexFlowColumn collapsible-content width100p">
+    <div>
+      <div class="title_restorable space-between alignItemsCenter">
+        <label for="audio_bgm_volume_slider">Background Music</label>
+        <label class="checkbox flex-container" for="enable_bgm">
+          <input type="checkbox" id="enable_bgm" name="enable_bgm" aria-label="Toggle background music" />
+          <span class="bgm-toggle-on fa-solid fa-toggle-on" title="Disable BGM player"></span>
+          <span class="bgm-toggle-off fa-solid fa-toggle-off" title="Enable BGM player"></span>
+        </label>
+        <div id="bgm_manager_button" title="Manage music links" class="menu_button menu_button_icon manager-button">
+          <i class="fa-solid fa-list-ol"></i>
+        </div>
+      </div>
+      <div class="audio-container">
+        <div class="mute-vol-wrapper">
+          <div class="mute-div">
+            <div id="audio_bgm_mute" class="menu_button audio-player-button">
+              <i class="fa-solid fa-volume-high" id="audio_bgm_mute_icon"></i>
+            </div>
+          </div>
+          <div class="vol" id="bgm-volume-control">
+            <input
+              type="range"
+              class="audio-slider vertical-slider"
+              id="audio_bgm_volume_slider"
+              value="100"
+              maxlength="100"
+              title="Background music volume"
+            />
+          </div>
+        </div>
+        <div class="play-pause-div">
+          <div id="audio_bgm_play_pause" class="menu_button audio-player-button">
+            <i class="fa-solid fa-play" id="audio_bgm_play_pause_icon"></i>
+          </div>
+        </div>
+        <div class="progress-div">
+          <input type="range" class="audio-slider" id="audio_bgm_progress_slider" value="0" maxlength="100" title="Background music progress" />
+        </div>
+      </div>
+      <div class="audio-adjust">
+        <div class="playlist">
+          <select id="audio_bgm_select" title="Select background music track"></select>
+        </div>
+        <div class="audio-mixer-element audio-mixer-mode">
+          <div id="audio_bgm_mode" class="menu_button audio-player-button">
+            <i class="fa-solid fa-repeat" id="audio_bgm_mode_icon"></i>
+          </div>
+        </div>
+      </div>
+      <audio id="audio_bgm" controls src=""></audio>
+    </div>
+    <div>
+      <div class="title_restorable space-between alignItemsCenter">
+        <label for="audio_ambient_volume_slider">Sound Effects</label>
+        <label class="checkbox flex-container" for="enable_ambient">
+          <input type="checkbox" id="enable_ambient" name="enable_ambient" aria-label="Toggle sound effects" />
+          <span class="ambient-toggle-on fa-solid fa-toggle-on" title="Disable Ambient player"></span>
+          <span class="ambient-toggle-off fa-solid fa-toggle-off" title="Enable Ambient player"></span>
+        </label>
+        <div id="ambient_manager_button" title="Manage sound effect links" class="menu_button menu_button_icon manager-button">
+          <i class="fa-solid fa-list-ol"></i>
+        </div>
+      </div>
+      <div class="audio-container">
+        <div class="mute-vol-wrapper">
+          <div class="mute-div">
+            <div id="audio_ambient_mute" class="menu_button audio-player-button">
+              <i class="fa-solid fa-volume-high" id="audio_ambient_mute_icon"></i>
+            </div>
+          </div>
+          <div class="vol" id="ambient-volume-control">
+            <input
+              type="range"
+              class="audio-slider vertical-slider"
+              id="audio_ambient_volume_slider"
+              value="100"
+              maxlength="100"
+              title="Sound effects volume"
+            />
+          </div>
+        </div>
+        <div class="play-pause-div">
+          <div id="audio_ambient_play_pause" class="menu_button audio-player-button">
+            <i class="fa-solid fa-play" id="audio_ambient_play_pause_icon"></i>
+          </div>
+        </div>
+        <div class="progress-div">
+          <input type="range" class="audio-slider" id="audio_ambient_progress_slider" value="0" maxlength="100" title="Sound effects progress" />
+        </div>
+      </div>
+      <div class="audio-adjust">
+        <div class="playlist">
+          <select id="audio_ambient_select" title="Select sound effect track"></select>
+        </div>
+        <div class="audio-mixer-element audio-mixer-mode">
+          <div id="audio_ambient_mode" class="menu_button audio-player-button">
+            <i class="fa-solid fa-repeat" id="audio_ambient_mode_icon"></i>
+          </div>
+        </div>
+      </div>
+      <audio id="audio_ambient" controls src=""></audio>
+    </div>
+    <div class="flex-container gap10px spaceBetween">
+      <div class="wide50p">
+        <label for="audio_cooldown">Fade duration (seconds)</label>
+        <input id="audio_cooldown" class="text_pole wide25p" title="Fade duration in seconds" />
+      </div>
+
+      <div class="flex row-reverse alignItemsCenter justifyContentFlexEnd gap-12">
+        <label for="audio_refresh_assets">Refresh playlist</label>
+        <div id="audio_refresh_assets" class="menu_button btn-refresh">
+          <i class="fa-solid fa-refresh fa-lg"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

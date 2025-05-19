@@ -1,0 +1,37 @@
+<div class="flex-container flexFlowColumn width100p">
+  <div class="divider"></div>
+  <div class="iframe_update_listener">
+    <div class="flex-container spaceBetween alignItemsCenter">
+      <div class="flex-container" style="margin: 10px 0">
+        <div class="flex alignItemsCenter">
+          <input id="iframe_update_listener_enabled" type="checkbox" style="margin: 0 5px 0 1px" aria-label="Enable listener" /><span
+            style="margin-right: 10px"
+            >Enable Listener</span
+          >
+        </div>
+        <div class="flex alignItemsCenter">
+          <input id="iframe_update_listener_enable_echo" type="checkbox" style="margin: 0 5px 0 1px" aria-label="Enable tavern error popups" /><span
+            >Enable Tavern Error Popups</span
+          >
+        </div>
+      </div>
+      <div class="menu_button menu_button_icon interactable">
+        <a
+          href="https://discord.com/channels/1134557553011998840/1320081111451439166/1354125905848569958"
+          target="_blank" rel="noopener noreferrer"
+          ><small><i class="fa-solid fa-book" style="margin-right: 5px"></i>Usage Guide</small></a
+        >
+      </div>
+    </div>
+    <div class="flex-container flexFlowColumn">
+      <div class="flex flexFlowColumn">
+        <b class="table_setting_category_header">Listener URL</b>
+        <input id="iframe_update_listener_url" class="text_pole" type="url" title="Listener endpoint URL" />
+      </div>
+      <div class="flex flexFlowColumn">
+        <b class="table_setting_category_header">Refresh Interval (milliseconds)</b>
+        <input id="iframe_update_listener_duration" class="text_pole" type="number" min="1" title="Refresh interval in milliseconds" />
+      </div>
+    </div>
+  </div>
+</div>

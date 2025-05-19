@@ -1,0 +1,12 @@
+{
+  "display_name": "Tavern Helper",
+  "loading_order": 100,
+  "requires": [],
+  "optional": [],
+  "js": "dist/index.js",
+  "css": "style.css",
+  "author": "KAKAA - translated by endege",
+  "version": "3.1.4",
+  "homePage": "https://github.com/endege/JS-Slash-Runner-EN",
+  "auto_update": true
+}

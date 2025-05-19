@@ -1,0 +1,63 @@
+<div class="extension-content-item">
+  <div class="flex flexFlowColumn">
+    <div class="settings-title-text">Enable Renderer</div>
+    <div class="settings-title-description">When enabled, eligible code blocks will be rendered</div>
+  </div>
+  <div class="toggle-switch">
+    <input type="checkbox" id="render-enable-toggle" class="toggle-input" checked aria-label="Toggle renderer" />
+    <label for="render-enable-toggle" class="toggle-label">
+      <span class="toggle-handle"></span>
+    </label>
+  </div>
+</div>
+<div class="divider"></div>
+<div class="extension-content-item">
+  <div class="flex flexFlowColumn">
+    <div class="settings-title-text">Enable Render Optimization</div>
+    <div class="settings-title-description">Disable code highlighting to speed up rendering</div>
+  </div>
+  <div class="toggle-switch">
+    <input type="checkbox" id="render-optimize-toggle" class="toggle-input" checked aria-label="Toggle render optimization" />
+    <label for="render-optimize-toggle" class="toggle-label">
+      <span class="toggle-handle"></span>
+    </label>
+  </div>
+</div>
+<div class="divider"></div>
+<div class="extension-content-item">
+  <div class="flex flexFlowColumn">
+    <div class="settings-title-text">Enable Code Folding</div>
+    <div class="settings-title-description">Collapse all code blocks to avoid affecting readability when replacing with frontend code</div>
+  </div>
+  <div class="toggle-switch">
+    <input type="checkbox" id="render-hide-style-toggle" class="toggle-input" checked aria-label="Toggle code folding" />
+    <label for="render-hide-style-toggle" class="toggle-label">
+      <span class="toggle-handle"></span>
+    </label>
+  </div>
+</div>
+<div class="divider"></div>
+<div class="extension-content-item">
+  <div class="flex flexFlowColumn">
+    <div class="settings-title-text">Render Depth</div>
+    <div class="settings-title-description">Number of recent messages to render (0 = render all messages)</div>
+  </div>
+  <div class="input-number-wrapper">
+    <input type="number" id="render-depth" class="input-number" min="0" value="0" title="Number of messages to render" />
+  </div>
+</div>
+<div class="divider"></div>
+<div class="extension-content-item">
+  <div class="flex flexFlowColumn">
+    <div class="settings-title-text">Enable Tampermonkey Compatibility</div>
+    <div class="settings-title-description">
+      When enabled, supports <a href="https://www.tampermonkey.net/documentation.html" target="_blank" rel="noopener noreferrer">Tampermonkey HTML injection scripts</a>
+    </div>
+  </div>
+  <div class="toggle-switch">
+    <input type="checkbox" id="tampermonkey-compatibility-toggle" class="toggle-input" checked aria-label="Toggle Tampermonkey compatibility" />
+    <label for="tampermonkey-compatibility-toggle" class="toggle-label">
+      <span class="toggle-handle"></span>
+    </label>
+  </div>
+</div>

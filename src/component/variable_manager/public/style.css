@@ -1,0 +1,965 @@
+/* Variable manager container styles */
+#variable-manager-container {
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* 防止内容溢出 */
+}
+
+/* Navigation bar container styles */
+.variable-nav-container {
+  display: flex;
+  justify-content: flex-start;
+  padding: 5px 0;
+  position: relative;
+  height: 40px;
+}
+
+/* Basic tab styles */
+.tab-item {
+  padding: 0px 16px;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+  height: 100%;
+}
+
+.tab-item-text {
+  font-size: var(--mainFontSize);
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+/* Tab bottom bar effect (initially hidden) */
+.tab-item::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 3px;
+  width: 70%;
+  height: 3px;
+  background-color: var(--SmartThemeQuoteColor);
+  transform: translate(-50%, 0) scaleX(0);
+  transition: transform 0.3s ease;
+  z-index: -1;
+}
+
+/* Active tab styles */
+.tab-item.active {
+  font-weight: bold;
+}
+
+/* Using transform scale instead of font size changes */
+.tab-item.active .tab-item-text {
+  transform: scale(1.3);
+}
+
+/* Show bottom bar in active state */
+.tab-item.active::after {
+  transform: translate(-50%, 0) scaleX(1);
+}
+
+/* Left controls area */
+.left-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-grow: 1;
+  max-width: calc(100% - 200px); /* Make sure there is enough space for the right button */
+}
+
+/* Right controls area */
+.right-controls {
+  display: flex;
+  gap: 10px;
+  white-space: nowrap;
+}
+
+/* Filter icon */
+.filter-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+/* Search box container */
+.search-container {
+  flex-grow: 1;
+  min-width: 100px;
+}
+
+/* Search box */
+.variable-search {
+  width: 100%;
+  height: 25px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  border: 1px solid #333;
+  background-color: #333;
+  color: #fff;
+}
+
+.variable-search:focus {
+  outline: 1px solid var(--SmartThemeQuoteColor);
+}
+
+/* Filter options container */
+.filter-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px;
+  background-color: #444;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+/* Filter option */
+.filter-option {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.filter-checkbox {
+  margin: 0;
+}
+
+/* Content container styles */
+.tab-content-container {
+  padding: 10px 0;
+  flex: 1; /* Let the content area take up the remaining space */
+  overflow-y: auto; /* Adding a vertical scroll bar */
+  min-height: 120px; /* Ensure that the content area has a minimum height in the empty state */
+}
+
+/* Content area hidden by default */
+.tab-content {
+  display: none;
+  min-height: 100px;
+}
+
+/* Show content area in active state */
+.tab-content.active {
+  display: block;
+}
+
+/* Empty state message styles */
+.empty-state {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  text-align: center;
+  color: var(--SmartThemeBodyColor, #ccc);
+  border-radius: 5px;
+  margin: 10px 0;
+  min-height: 100px; /* Make sure the empty state has enough height */
+}
+
+.empty-state p {
+  font-size: var(--mainFontSize);
+  opacity: 0.7;
+}
+
+/* Variable card styles */
+.tab-content .variable-card {
+  display: flex;
+  flex-direction: column;
+  padding: 5px 10px 10px;
+  gap: 3px;
+  background-color: #444;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  position: relative; /* Add relative positioning to support inner absolutely positioned elements */
+}
+
+/* Variable card header styles */
+.variable-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Variable title container */
+.variable-title-container {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.variable-card-header i,
+.variable-card-header input,
+.add-list-item {
+  font-size: calc(var(--mainFontSize) * 0.8);
+}
+/* Variable title input */
+.variable-list .variable-title {
+  background: transparent !important;
+  border: none !important;
+  color: var(--SmartThemeBodyColor, #fff);
+  font-weight: bold;
+  width: 150px;
+}
+
+.variable-title:focus {
+  outline: 1px solid var(--SmartThemeQuoteColor);
+  border-radius: 3px;
+}
+
+/* Variable action buttons container */
+.variable-actions {
+  display: flex;
+  gap: 5px;
+}
+
+/* Variable action button */
+.variable-action-btn {
+  background: transparent;
+  border: none;
+  color: var(--SmartThemeBodyColor, #fff);
+  cursor: pointer;
+  border-radius: 3px;
+  transition: background-color 0.2s;
+}
+
+.variable-action-btn:hover {
+  background-color: var(--SmartThemeQuoteColor, #777);
+}
+
+/* Variable content input - defaults to single line */
+.variable-content-input {
+  width: 100%;
+  height: 30px;
+  padding: 5px 10px;
+  background-color: var(--SmartThemeInputColor, #333);
+  color: var(--SmartThemeBodyColor, #fff);
+  border: 1px solid var(--SmartThemeBorderColor, #666);
+  border-radius: 5px;
+  resize: vertical; /* Keep vertically resizable */
+  overflow: hidden; /* Hide overflow content */
+  font-size: calc(var(--mainFontSize) * 0.8);
+}
+
+.variable-content-input:focus {
+  outline: 1px solid var(--SmartThemeQuoteColor);
+}
+
+/* List items container */
+.list-items-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+/* List item */
+.list-item {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* List item input */
+.list-item-input {
+  flex: 1;
+  height: 30px;
+  min-height: 30px;
+  padding: 5px 10px;
+  background-color: var(--SmartThemeInputColor, #333);
+  color: var(--SmartThemeBodyColor, #fff);
+  border: 1px solid var(--SmartThemeBorderColor, #666);
+  border-radius: 5px;
+  resize: vertical;
+}
+
+/* List item delete button */
+.list-item-delete {
+  background: transparent;
+  border: none;
+  color: var(--SmartThemeBodyColor, #fff);
+  cursor: pointer;
+  font-size: calc(var(--mainFontSize) * 0.8);
+  padding: 5px;
+  border-radius: 3px;
+  transition: background-color 0.2s;
+}
+
+.list-item-delete:hover,
+.variable-action-btn.delete-btn:hover {
+  background-color: rgba(255, 0, 0, 0.3);
+}
+
+/* Add list item button */
+.add-list-item {
+  background-color: var(--SmartThemeInputColor, #333);
+  color: var(--SmartThemeBodyColor, #fff);
+  border: 1px dashed var(--SmartThemeBorderColor, #666);
+  border-radius: 5px;
+  padding: 3px;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+  transition: background-color 0.2s;
+}
+
+/* Variable type selector styles */
+.variable-type-selector {
+  padding: 15px;
+}
+
+.selector-title {
+  font-size: calc(var(--mainFontSize) * 1.1);
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.selector-options {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.selector-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 5px;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.section-title {
+  width: 100%;
+  font-weight: bold;
+  margin-bottom: 5px;
+  border-bottom: 1px solid var(--SmartThemeBorderColor, #666);
+  padding-bottom: 5px;
+}
+
+.selector-option {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 3px 5px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.2s;
+  width: auto;
+  margin: 3px;
+  min-width: 130px;
+}
+
+.selector-option:hover {
+  background-color: var(--SmartThemeQuoteColor, #777);
+}
+
+.selector-option i {
+  font-size: calc(var(--mainFontSize) * 1.2);
+  margin-right: 8px;
+  margin-bottom: 0;
+}
+
+.selector-option span {
+  font-size: calc(var(--mainFontSize) * 0.85);
+}
+
+/* JavaScript type specific styles */
+
+/* Boolean variable styles */
+.boolean-buttons-container {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  padding: 5px 0;
+}
+
+.boolean-btn {
+  padding: 3px 10px;
+  border: 1px solid var(--SmartThemeBorderColor, #666);
+  background-color: var(--SmartThemeInputColor, #333);
+  color: var(--SmartThemeBodyColor, #fff);
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: calc(var(--mainFontSize) * 0.85);
+  transition: all 0.2s;
+}
+
+.boolean-btn.active {
+  background-color: var(--SmartThemeQuoteColor, #777);
+  font-weight: bold;
+}
+
+/* Number input styles */
+.number-input {
+  width: 100%;
+  height: 30px;
+  padding: 5px 10px;
+  background-color: var(--SmartThemeInputColor, #333);
+  color: var(--SmartThemeBodyColor, #fff);
+  border: 1px solid var(--SmartThemeBorderColor, #666);
+  border-radius: 5px;
+  font-size: calc(var(--mainFontSize) * 0.8);
+}
+
+.number-input:focus {
+  outline: 1px solid var(--SmartThemeQuoteColor);
+}
+
+/* JSON input styles */
+.json-input {
+  font-family: monospace;
+  min-height: 30px;
+  height: 80px; /* Default higher height */
+  white-space: pre;
+  overflow: auto; /* Change to auto to allow scrolling */
+}
+
+.json-input:focus {
+  outline: 1px solid var(--SmartThemeQuoteColor);
+}
+
+/* Type-specific icon colors */
+.variable-card[data-type='array'] .variable-title-container i {
+  color: #8bc34a;
+}
+
+.variable-card[data-type='boolean'] .variable-title-container i {
+  color: #2196f3;
+}
+
+.variable-card[data-type='number'] .variable-title-container i {
+  color: #ff9800;
+}
+
+.variable-card[data-type='object'] .variable-title-container i {
+  color: #9c27b0;
+}
+
+.variable-card[data-type='string'] .variable-title-container i {
+  color: #e91e63;
+}
+
+/* Add variable dialog styles */
+.add-variable-dialog {
+  padding: 15px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 300px;
+}
+
+.add-variable-dialog h3 {
+  font-size: calc(var(--mainFontSize) * 1.1);
+  margin-bottom: 15px;
+  color: var(--SmartThemeBodyColor, #fff);
+  text-align: center;
+}
+
+/* Boolean control styles */
+.boolean-input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.boolean-buttons-container {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  padding: 5px 0;
+}
+
+.boolean-btn {
+  padding: 3px 10px;
+  border: 1px solid var(--SmartThemeBorderColor, #666);
+  background-color: var(--SmartThemeInputColor, #333);
+  color: var(--SmartThemeBodyColor, #fff);
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: calc(var(--mainFontSize) * 0.85);
+  transition: all 0.2s;
+}
+
+.boolean-btn.active {
+  background-color: var(--SmartThemeQuoteColor, #777);
+  font-weight: bold;
+}
+
+/* Variable update animation effects */
+
+/* New variable highlight effect */
+@keyframes variable-added-animation {
+  0% {
+    background-color: rgba(0, 255, 0, 0.1);
+    box-shadow: 0 0 5px rgba(0, 255, 0, 0.7);
+  }
+  50% {
+    background-color: rgba(0, 255, 0, 0.3);
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.9);
+  }
+  100% {
+    background-color: transparent;
+    box-shadow: none;
+  }
+}
+
+.variable-added {
+  animation: variable-added-animation 1.5s ease;
+  position: relative;
+}
+
+.variable-added::before {
+  content: '新增';
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  background-color: rgba(0, 150, 0, 0.8);
+  color: white;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 12px;
+  opacity: 0;
+  animation: fade-in-out 1.5s ease;
+}
+
+/* Changed variable flash effect */
+@keyframes variable-changed-animation {
+  0% {
+    background-color: rgba(255, 165, 0, 0.1);
+    box-shadow: 0 0 5px rgba(255, 165, 0, 0.7);
+  }
+  50% {
+    background-color: rgba(255, 165, 0, 0.3);
+    box-shadow: 0 0 10px rgba(255, 165, 0, 0.9);
+  }
+  100% {
+    background-color: transparent;
+    box-shadow: none;
+  }
+}
+
+.variable-changed {
+  animation: variable-changed-animation 1.5s ease;
+  position: relative;
+}
+
+.variable-changed::before {
+  content: '已更新';
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  background-color: rgba(255, 165, 0, 0.8);
+  color: white;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 12px;
+  opacity: 0;
+  animation: fade-in-out 1.5s ease;
+}
+
+/* Deleted variable fade out effect */
+@keyframes variable-deleted-animation {
+  0% {
+    background-color: rgba(255, 0, 0, 0.1);
+    box-shadow: 0 0 5px rgba(255, 0, 0, 0.7);
+  }
+  50% {
+    background-color: rgba(255, 0, 0, 0.3);
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.9);
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    background-color: rgba(255, 0, 0, 0.4);
+    transform: scale(0.95);
+    opacity: 0.7;
+  }
+}
+
+.variable-deleted {
+  animation: variable-deleted-animation 1s ease forwards;
+  position: relative;
+}
+
+.variable-deleted::before {
+  content: '已删除';
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  background-color: rgba(255, 0, 0, 0.8);
+  color: white;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 12px;
+  opacity: 0;
+  animation: fade-in-out 1s ease;
+}
+
+/* Label animation */
+@keyframes fade-in-out {
+  0% {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  80% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+}
+
+/* Variable manager dialog styles */
+.variable-manager-dialog {
+  width: 40dvw;
+  height: 80dvh;
+  min-width: 300px;
+  min-height: 250px;
+  background-color: var(--SmartThemeBodyBGColor, #1f1f1f);
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 9999;
+}
+
+.variable-manager-dialog.dragging {
+  opacity: 0.8;
+}
+
+.variable-manager-dialog.resizing {
+  opacity: 0.8;
+}
+
+.dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 12px;
+  background-color: var(--SmartThemeQuoteColor);
+  cursor: move;
+  user-select: none;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.dialog-title {
+  font-weight: bold;
+  font-size: calc(var(--mainFontSize) * 0.8);
+  color: var(--SmartThemeBodyColor);
+}
+
+.dialog-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.dialog-close-btn,
+.dialog-toggle-btn {
+  background: transparent;
+  border: none;
+  color: var(--SmartThemeBodyColor, #fff);
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dialog-content {
+  flex: 1;
+  overflow: hidden; /* Prevent content from overflowing */
+  padding: 0 10px;
+  display: flex; /* Enable flexbox layout */
+  flex-direction: column; /* Arrange child elements vertically */
+  transition: max-height 0.3s ease-in-out;
+}
+
+/* Dialog box style in collapsed state */
+.variable-manager-dialog.content-collapsed {
+  min-height: auto !important;
+  height: 25px !important;
+}
+
+.variable-manager-dialog.content-collapsed .dialog-content {
+  border-bottom: none;
+}
+
+.dialog-resize-handle {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  bottom: 0;
+  right: 0;
+  cursor: se-resize;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill="%23888" d="M11 10L10 11 13 14 10 14 10 15 15 15 15 10 14 10 14 13z M7 6L6 7 9 10 6 10 6 11 11 11 11 6 10 6 10 9z M3 2L2 3 5 6 2 6 2 7 7 7 7 2 6 2 6 5z"/></svg>');
+}
+
+.variable-tabs-container {
+  flex-shrink: 0; /* Prevent label container from being compressed */
+}
+
+.variable-tab-content {
+  flex: 1;
+  overflow: hidden; /* Change to hidden to let the internal tab-content-container handle scrolling */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Make sure the list is displayed to fit the container height */
+.variable-list {
+  max-height: none !important;
+  height: 100%;
+}
+
+/* Dialog mask layer */
+.variable-dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+}
+
+/* Variable type selection dialog box */
+.variable-type-dialog {
+  width: 400px;
+  background-color: var(--SmartThemeBodyBGColor, #1f1f1f);
+  border: 1px solid var(--SmartThemeBorderColor, #666);
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.variable-type-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding: 15px;
+}
+
+.variable-type-options div {
+  padding: 10px;
+  background-color: #444;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.variable-type-options div:hover {
+  background-color: var(--SmartThemeBodyColor);
+  color: #fff;
+  box-shadow: 0 0 5px rgba(0, 144, 224, 0.5);
+}
+
+/* Confirmation dialog */
+.confirm-dialog {
+  width: 350px;
+  background-color: var(--SmartThemeBodyBGColor, #1f1f1f);
+  border: 1px solid var(--SmartThemeBorderColor, #666);
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.confirm-dialog .dialog-content p {
+  margin: 10px 0 20px;
+  text-align: center;
+}
+
+.confirm-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.confirm-buttons button {
+  padding: 8px 20px;
+  background-color: var(--SmartThemeQuoteColor, #2a2a2a);
+  color: var(--SmartThemeBodyColor, #fff);
+  border: 1px solid var(--SmartThemeBorderColor, #666);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.confirm-buttons button:hover {
+  background-color: var(--SmartThemeShadowColor, #3a3a3a);
+}
+
+.confirm-buttons .confirm-btn {
+  background-color: var(--SmartThemeAccentBtnColor, #00558d);
+}
+
+.confirm-buttons .confirm-btn:hover {
+  background-color: var(--SmartThemeAccentBtnHoverColor, #0066a8);
+}
+
+/* Variable update notification styles */
+.value-change-indicator {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: rgba(255, 165, 0, 0.8);
+  color: white;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  z-index: 100;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  animation: fade-in-out 2s ease;
+  max-width: 80%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Floor filter container */
+.floor-filter-container {
+  margin: 8px 0;
+  background-color: #444;
+  border-radius: 5px;
+  padding: 8px;
+  font-size: calc(var(--mainFontSize) * 0.8);
+}
+
+/* Floor filter content area */
+.floor-filter-content {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Floor range input area */
+.floor-range-inputs {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+/* Floor input group */
+.floor-input-group {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+}
+
+/* Floor input */
+.floor-input {
+  width: 70px;
+  height: 22px;
+  padding: 3px 6px;
+  border-radius: 5px !important;
+  margin-right: 5px;
+  font-size: calc(var(--mainFontSize) * 0.8);
+  text-align: center;
+  background-color: #333;
+  color: #fff;
+  border: 1px solid #333;
+}
+
+.floor-input:focus {
+  outline: 1px solid var(--SmartThemeQuoteColor);
+}
+
+/* Floor separator */
+.floor-separator {
+  margin: 0 6px;
+  color: var(--SmartThemeBodyColor, #fff);
+}
+
+/* Floor filter button */
+.floor-filter-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  border: none;
+  background-color: var(--SmartThemeQuoteColor);
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-size: calc(var(--mainFontSize) * 0.8);
+}
+
+/* Floor filter error message */
+.floor-filter-error {
+  color: #f66;
+  font-size: calc(var(--mainFontSize) * 0.75);
+  padding: 3px 0;
+}
+
+/* Floor collapsible panel */
+.floor-panel {
+  margin-bottom: 10px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+/* Floor panel header */
+.floor-panel-header {
+  padding: 3px 5px;
+  background-color: #333;
+  font-size: calc(var(--mainFontSize) * 0.8);
+  font-weight: 600;
+  color: var(--SmartThemeQuoteColor);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+/* Floor panel content */
+.floor-panel-body {
+  background-color: #333;
+  padding: 6px;
+  display: none;
+}
+
+.floor-panel-body.expanded {
+  display: block;
+}
+
+/* Floor panel collapse/expand icon */
+.floor-panel-icon {
+  transition: transform 0.3s;
+}
+
+.floor-panel-icon.expanded {
+  transform: rotate(180deg);
+}
